@@ -39,13 +39,32 @@ function barChartGraph (filterSelected) {
         //console.log(filterData);
 
         //Filter for only the first 10 samples, remember that in JS
-        //the last digit in the filter is excluded
+        //the last digit in the filter is excluded, create variables for the labels
+        //of the horizontal bar chart
         var valuesInverse = filterData.sample_values.slice(0,10).reverse();
         var otuID = filterData.otu_ids.slice(0,10).reverse();
+        var stringIDs = otuID.map(row => "OTU" + row.toString());
+        var labelsInverse = filterSelected.otu_labels.slice(0,10).reverse();
 
+        //for plotly to ingest the horizontal bar chart, you need to create
+        // variables for it, with a specified formatting. 
+        var data0 = [{
+            x: valuesInverse,
+            y: stringIDs,
+            text: labelsInverse,
+            name: filterSelected,
+            type: "bar",
+            orientation:"h"
+        }];
 
-        //H-Bar Chart
-        
+        var layout0 = {
+            barmode: "group",
+            hovermode: "closest"
+        };
+
+        //we are going to call out those 2 bar chart variables within a Plot.ly function
+        Plotly.newPlot("bar", data0, layout0);
+
     });
 };
 
