@@ -68,6 +68,11 @@ function barChartGraph (filterSelected) {
     });
 };
 
+// Bubble plot function 
+function bubblePlot (filterSelected){
+// ingest the data as with the other plots
+    d3.json("static/js/samples.json").then((sampleData) =>
+}
 
 
 
