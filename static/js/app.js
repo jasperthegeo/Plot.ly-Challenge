@@ -20,5 +20,5 @@ function init() {
         //use console.log to see the progress
         console.log(idNum);
         console.log(sampeData)
-    }
+    });
 }
