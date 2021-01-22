@@ -4,14 +4,15 @@
 
 
 //I am initialising a drop-down function menu, 
-function init() {
+
+function allTheGraphs() {
     var dropdown = d3.select("#selDataset");
 
 //D3 is reading the samples json file
     d3.json("samples.json").then((sampleData) => {
         
         //Using the forEach method, the dropdown is now being populated with a number
-        sampleData.names.forEach(sample) => {
+        sampleData.names.forEach((sample) => {
             dropdown.append("option").text(sample).property("value", sample);
         });
 
@@ -19,6 +20,17 @@ function init() {
 
         //use console.log to see the progress
         console.log(idNum);
-        console.log(sampeData)
+        console.log(sampeData);
+        // metaDataShow(idNum);
+        // barChartGraph(idNum);
+        // bubblePlot(idNum);
+
     });
-}
+};
+
+// function optionChanged(idNum) {
+
+// }
+
+
+allTheGraphs();
