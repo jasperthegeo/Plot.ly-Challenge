@@ -7,9 +7,18 @@
 function init() {
     var dropdown = d3.select("#selDataset");
 
+//D3 is reading the samples json file
     d3.json("samples.json").then((sampleData) => {
+        
+        //Using the forEach method, the dropdown is now being populated with a number
         sampleData.names.forEach(sample) => {
             dropdown.append("option").text(sample).property("value", sample);
-        }
+        });
+
+        var idNum = dropdown.property("value");
+
+        //use console.log to see the progress
+        console.log(idNum);
+        console.log(sampeData)
     }
 }
