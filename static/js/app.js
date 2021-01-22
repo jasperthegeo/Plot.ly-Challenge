@@ -28,7 +28,7 @@ function allTheGraphs() {
     });
 };
 
-function barChartGraph (fitereSelected) {
+function barChartGraph (filterSelected) {
 
     //we have the ingest the data each time for every graph
     d3.json("static/js/samples.json").then((sampleData) => {
@@ -37,6 +37,15 @@ function barChartGraph (fitereSelected) {
 
         //let's check this with another console.log
         //console.log(filterData);
+
+        //Filter for only the first 10 samples, remember that in JS
+        //the last digit in the filter is excluded
+        var valuesInverse = filterData.sample_values.slice(0,10).reverse();
+        var otuID = filterData.otu_ids.slice(0,10).reverse();
+
+
+        //H-Bar Chart
+        
     });
 };
 
@@ -47,11 +56,11 @@ function barChartGraph (fitereSelected) {
 //This is the function that changes the graphs based on the value
 //selected in the drop down menu, it calls the other functions to 
 //create their respective graphs. 
-// function optionChanged(idNum) {
-    // barChartGraph(idNum);
+ function optionChanged(idNum) {
+    barChartGraph(idNum);
     // bubblePlot(idNum);
     // metaDataShow(idNum);
-// }
+};
 
 
 
