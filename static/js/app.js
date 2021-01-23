@@ -44,7 +44,7 @@ function barChartGraph (filterSelected) {
         var valuesInverse = filterData.sample_values.slice(0,10).reverse();
         var otuID = filterData.otu_ids.slice(0,10).reverse();
         var stringIDs = otuID.map(row => "OTU" + row.toString());
-        var labelsInverse = filterSelected.otu_labels.slice(0,10).reverse();
+        var labelsInverse = filterData.otu_labels.slice(0,10).reverse();
 
         //for plotly to ingest the horizontal bar chart, you need to create
         // variables for it, with a specified formatting. 
