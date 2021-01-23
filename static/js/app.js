@@ -80,7 +80,27 @@ function bubblePlot (filterSelected){
         
         //check to see if we did it correctly with a console.log()
         console.log(otuString);
-        
+
+        var data1 = [{
+            x: filterData.otu_ids,
+            y: filterData.sample_values,
+            text: filterData.otu_labels,
+            mode: "markers",
+            marker: {
+                color:otuString,
+                size: filterData.sample_values,
+                colorscale:"rdylbu"
+            }
+        }];
+
+        var layout1 = {
+            xaxis: {title: "OTU ID#"},
+            hovermode: "closest",
+            showlegend: false
+        };
+
+        Plotly.newPlot("bubble", data1, layout1);
+
     });
    
     
@@ -94,7 +114,7 @@ function bubblePlot (filterSelected){
 //create their respective graphs. 
  function optionChanged(idNum) {
     barChartGraph(idNum);
-    // bubblePlot(idNum);
+    bubblePlot(idNum);
     // metaDataShow(idNum);
 };
 
