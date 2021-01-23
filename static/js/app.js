@@ -22,9 +22,9 @@ function allTheGraphs() {
         //console.log(sampleData);
 
         //Call the graph functions that I have created
-        // metaDataShow(idNum);
-        // barChartGraph(idNum);
-        // bubblePlot(idNum);
+        metaDataShow(idNum);
+        barChartGraph(idNum);
+        bubblePlot(idNum);
     });
 };
 
@@ -79,7 +79,7 @@ function bubblePlot (filterSelected){
         var otuString = filterData.otu_ids.map(String);
         
         //check to see if we did it correctly with a console.log()
-        console.log(otuString);
+        //console.log(otuString);
 
         var data1 = [{
             x: filterData.otu_ids,
@@ -101,21 +101,35 @@ function bubblePlot (filterSelected){
 
         Plotly.newPlot("bubble", data1, layout1);
 
-    });
-   
-    
+    }); 
 };
 
+//This is the metadata function, that will parse the file and show us the
+//candidate's panel.
 
+function metaDataShow (filterSelected) {
+    d3.json("static/js/samples.json").then((sampleData) =>{
+    
+        var metaDataPanel = d3.select("#sample-metadata");
+        var metaData = data.metaData.filter(object => object.id == filterSelected)[0];
+        metaDataPanel.html("");
 
+        console.log(metaDataPanel);
 
+        Object.entries(metaData).forEach(([key, value]) => {
+            var panelBody = dataPanel.append("h6").text(`${key}: ${value}`);
+
+        });
+    });
+
+};
 //This is the function that changes the graphs based on the value
 //selected in the drop down menu, it calls the other functions to 
 //create their respective graphs. 
  function optionChanged(idNum) {
     barChartGraph(idNum);
     bubblePlot(idNum);
-    // metaDataShow(idNum);
+    metaDataShow(idNum);
 };
 
 
