@@ -109,24 +109,29 @@ function bubblePlot (filterSelected){
 
 function metaDataShow (filterSelected) {
     d3.json("static/js/samples.json").then((sampleData) =>{
-    
-        var metaDataPanel = d3.select("#sample-metadata");
-        var metaData = data.metaData.filter(object => object.id == filterSelected)[0];
-        metaDataPanel.html("");
+           
+        // display metadata
+        // get reference to panel body
+        var dataPanel = d3.select("#sample-metadata");
+        // clear panel data
+        dataPanel.html("");
 
-        console.log(metaDataPanel);
+        var metadata1 = sampleData.metadata.filter(object => object.id == filterSelected)[0];
 
-        Object.entries(metaData).forEach(([key, value]) => {
-            var panelBody = dataPanel.append("h6").text(`${key}: ${value}`);
+        console.log(metadata1);
 
+        Object.entries(metadata1).forEach(([key, value]) => {
+            dataPanel.append("h6").text(`${key}: ${value}`);
         });
+      
     });
-
 };
 //This is the function that changes the graphs based on the value
 //selected in the drop down menu, it calls the other functions to 
 //create their respective graphs. 
- function optionChanged(idNum) {
+
+
+function optionChanged(idNum) {
     barChartGraph(idNum);
     bubblePlot(idNum);
     metaDataShow(idNum);
