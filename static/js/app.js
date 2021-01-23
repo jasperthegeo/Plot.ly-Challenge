@@ -71,12 +71,20 @@ function barChartGraph (filterSelected) {
 // Bubble plot function 
 function bubblePlot (filterSelected){
 // ingest the data as with the other plots
-    d3.json("static/js/samples.json").then((sampleData) =>
-
-    //Just as before, we need to filter the data
-    var samples = sampleData.samples;
-    var filterData = samples.filter(object => object.id == filterSelected)[0];
-}
+    d3.json("static/js/samples.json").then((sampleData) =>{
+        var samples = sampleData.samples;
+        var filterData = samples.filter(object => object.id == filterSelected)[0];
+    
+        //just as before, we need to filter the data 
+        var otuString = filterData.otu_ids.map(String);
+        
+        //check to see if we did it correctly with a console.log()
+        console.log(otuString);
+        
+    });
+   
+    
+};
 
 
 
