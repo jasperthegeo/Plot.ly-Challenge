@@ -72,6 +72,10 @@ function barChartGraph (filterSelected) {
 function bubblePlot (filterSelected){
 // ingest the data as with the other plots
     d3.json("static/js/samples.json").then((sampleData) =>
+
+    //Just as before, we need to filter the data
+    var samples = sampleData.samples;
+    var filterData = samples.filter(object => object.id == filterSelected)[0];
 }
 
 
